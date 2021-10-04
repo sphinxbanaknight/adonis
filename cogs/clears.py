@@ -625,9 +625,8 @@ For Wizard: {list_wizard}
                         cell.value = 'No'
                     re_answer = cell.value
                 count += 1
-                rostersheet.update_cells(cell_list, value_input_option='USER_ENTERED')
-                await ctx.send(
-                    f'```{ctx.author.name} said {re_answer} with IGN: {ign.value}, Class: {role.value}.```')
+            rostersheet.update_cells(cell_list, value_input_option='USER_ENTERED')
+            await ctx.send(f'```{ctx.author.name} said {re_answer} with IGN: {ign.value}, Class: {role.value}.```')
             yes = 0
         except Exception as e:
             await ctx.send(f'Error on rostersheet: `{e}`')
