@@ -798,15 +798,18 @@ PLEASE MIND THE COMMA, IT ENSURES THAT I SEE EVERY ARGUMENT:
             cell_list = rostersheet.range("M4:M15")
             get_MATK = [""]
             for cell in cell_list:
-                get_MATK.append(cell.value)
+                if not cell == "" and not cell == None:
+                    get_MATK.append(cell.value)
             cell_list = rostersheet.range("M19:M30")
             get_ATK = [""]
             for cell in cell_list:
-                get_ATK.append(cell.value)
+                if not cell == "" and not cell == None:
+                    get_ATK.append(cell.value)
             cell_list = rostersheet.range("M34:M45")
             get_third = [""]
             for cell in cell_list:
-                get_third.append(cell.value)
+                if not cell == "" and not cell == None:
+                    get_third.append(cell.value)
 
             MATK_names = [item for item in get_MATK if item]
             ATK_names = [item for item in get_ATK if item]
