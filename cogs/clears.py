@@ -601,7 +601,7 @@ For Wizard: {list_wizard}
                 change_row = foundAttendanceIGN[0].row
             else:
                 try:
-                    change_row = next_available_row(rostersheet, 3, 51)
+                    change_row = next_available_row(rostersheet, 7, 51)
                 except ValueError as e:
                     change_row = 3
             if debugger: await ctx.send(f'{feedback_debug} rostersheet attendance change_row=`{change_row}`')
