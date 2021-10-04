@@ -815,6 +815,7 @@ PLEASE MIND THE COMMA, IT ENSURES THAT I SEE EVERY ARGUMENT:
             try:
                 embeded = discord.Embed(title="Current Party List", description="A list of our Current Party List",
                                         color=0x00FF00)
+
             except Exception as e:
                 print(f'discord embed returned {e}')
                 return
@@ -835,7 +836,11 @@ PLEASE MIND THE COMMA, IT ENSURES THAT I SEE EVERY ARGUMENT:
             except Exception as e:
                 print(f'add field returned {e}')
                 return
-            embeded.add_field(name="MATK Party", value=f'{MATKpt}', inline=True)
+            try:
+                embeded.add_field(name="MATK Party", value=f'{MATKpt}', inline=True)
+            except Exception as e:
+                print(f'add field returned {e}')
+                return
             try:
                 embeded.add_field(name="SECOND GUILD Party", value=f'{THIRDpt}', inline=True)
             except Exception as e:
