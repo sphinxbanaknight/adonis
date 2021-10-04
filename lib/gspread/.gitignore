@@ -1,0 +1,13 @@
+*.pyc
+tests/creds.json
+*.todo
+
+build/
+dist/
+
+# virtualenv
+env/
+
+# tox testrunner support
+.tox/
+gspread.egg-info/

@@ -1,0 +1,9 @@
+backup/
+venv/
+BC_roster.json
+BKbotv2.py
+BKbot.py
+__pycache__/
+.idea/
+prefixes.json
+try.py

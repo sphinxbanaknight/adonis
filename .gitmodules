@@ -1,0 +1,3 @@
+[submodule "lib/gspread"]
+	path = lib/gspread
+	url = https://github.com/burnash/gspread
