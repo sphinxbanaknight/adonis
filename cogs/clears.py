@@ -571,12 +571,12 @@ For Wizard: {list_wizard}
             await ctx.send("Wrong channel! Please use #bot.")
             return
         
-        arglist = [x.strip() for x in arguments.split(',')]
-        no_of_args = len(arglist)
-        if (no_of_args != 1
-                or not (arglist[0].lower() in answeryes or arglist[0].lower() in answerno)):
-            await ctx.send(f'{feedback_properplz} `/att y/n` *E.g. `/att y` to confirm attendance')
-            return
+        #arglist = [x.strip() for x in arguments.split(',')]
+        # no_of_args = len(arglist)
+        # if (no_of_args != 1
+        #         or not (arglist[0].lower() in answeryes or arglist[0].lower() in answerno)):
+        #     await ctx.send(f'{feedback_properplz} `/att y/n` *E.g. `/att y` to confirm attendance')
+        #     return
         
         next_row = 3
         found = 0
