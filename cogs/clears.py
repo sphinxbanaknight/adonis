@@ -835,12 +835,12 @@ PLEASE MIND THE COMMA, IT ENSURES THAT I SEE EVERY ARGUMENT:
             # for x in range(len(THIRD_names)):
             #     THIRDpt += THIRD_names[x] + '\n'
             try:
-                embeded.add_field(name="ATK Party", value=f'{ATKpt}', inline=True)
+                embeded.add_field(name="Party 1", value=f'{MATKpt}', inline=True)
             except Exception as e:
                 print(f'add field returned {e}')
                 return
             try:
-                embeded.add_field(name="MATK Party", value=f'{MATKpt}', inline=True)
+                embeded.add_field(name="Party 2", value=f'{ATKpt}', inline=True)
             except Exception as e:
                 print(f'add field returned {e}')
                 return
