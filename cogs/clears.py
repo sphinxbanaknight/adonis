@@ -619,13 +619,16 @@ For Wizard: {list_wizard}
                 elif count == 2:
                     # await ctx.send(f'test6 {ign.value} {role.value} {count}')
                     if arguments.lower() in answeryes:
-                        await ctx.send(f"{arguments}")
                         cell.value = 'Yes'
                         yes = 1
                     else:
                         cell.value = 'No'
                     re_answer = cell.value
                 count += 1
+                rostersheet.update_cells(cell_list, value_input_option='USER_ENTERED')
+                await ctx.send(
+                    f'```{ctx.author.name} said {re_answer} with IGN: {ign.value}, Class: {role.value}.```')
+            yes = 0
         except Exception as e:
             await ctx.send(f'Error on rostersheet: `{e}`')
             return
