@@ -176,40 +176,34 @@ async def on_ready():
     for server in client.guilds:
         if server.id == sk_server:
             sphinx = server
-            break
-            
-    for server in client.guilds:
         if server.id == c_server:
             cresence = server
             break
-    #    elif server.id == bk_server:
-    #        burger = server
+        if server.id == bk_server:
+            burger = server
 
     for channel in sphinx.channels:
         if channel.id == sk_bot:
             botinitsk = channel
             break
-    for channel in cresence.channels:
-        if channel.id == c_bot:
-            botinitc = channel
-            break
-    #for channel in burger.channels:
-    #    if channel.id == bk_bot:
-    #        botinitbk = channel
-    #    elif channel.id == bk_ann:
-    #        botinitbkann = channel
+
+    for channel in burger.channels:
+        if channel.id == bk_bot:
+            botinitbk = channel
+        # elif channel.id == bk_ann:
+        #     botinitbkann = channel
 
     print('Bot is online.')
-    await client.change_presence(status=discord.Status.dnd, activity=discord.Game('Getting scolded by Ardi'))
+    await client.change_presence(status=discord.Status.dnd, activity=discord.Game('Getting scolded by Cai'))
 
 
-    shit = gc.open('CRESENCE ROSTER')
+    shit = gc.open('Tempo')
     try:
         wsheet = shit.worksheet('WoE Roster Archive')
     except gspread.exceptions.WorksheetNotFound:
         await botinitsk.send(f'Could not find 5th sheet in our GSheets, creating one now.')
         #await botinitbk.send(f'Could not find 5th sheet in our GSheets, creating one now.')
-        await botinitc.send(f'Could not find 5th sheet in our GSheets, creating one now.')
+        await botinitbk.send(f'Could not find 5th sheet in our GSheets, creating one now.')
         spreadsheet = gc.open('CRESENCE ROSTER')
         wsheet = spreadsheet.add_worksheet(title='WoE Roster Archive', rows = 1000, cols = 10)
         kekerino = wsheet.range("A1:J1000")
@@ -233,72 +227,72 @@ async def on_ready():
         ph_time_formated = ph_time_unformated.strftime(format)
         await asyncio.sleep(5)
             
-        if not isarchived and ph_time_formated in tf_archive:
-            isarchived = True
-            await botinitsk.send('```Automatically cleared the roster! Please use /att y/n, y/n again to register your attendance.```')
-            await botinitsk.send('```An archive of the latest roster was saved in WoE Roster Archive Spreadsheet.```')
-            await botinitc.send('```Automatically cleared the roster! Please use /att y/n, y/n again to register your attendance.```')
-            await botinitc.send('```An archive of the latest roster was saved in WoE Roster Archive Spreadsheet.```')
-            try:
-                next_row = next_available_row(wsheet, 1)
-            except ValueError as e:
-                print(f'next_row returned {e}')
-                next_row = 1
-            copy_list2 = silk2.range("B4:D51")
-            copy_list4 = silk4.range("B4:D51")
-            paste_list = rostersheet.range(next_row, 1, next_row + 45, 3)
-            count = 0
-            newformat = "%B %Y"
-            ph_time = pytz.timezone('Asia/Manila')
-            ph_time_unformated = datetime.now(ph_time)
-            ph_time_new_formated = ph_time_unformated.strftime(newformat)
-            if ph_time_formated == t_silk2_archive:
-                for copy in copy_list2:
-                    data_pasted.append(copy.value)
-            elif ph_time_formated == t_silk4_archive:
-                for copy in copy_list4:
-                    data_pasted.append(copy.value)
-            for paste in paste_list:
-                if count == 0:
-                    if ph_time_formated == t_silk2_archive:
-                        d = ph_time_unformated.strftime("%d")
-                        d = int(d)
-                        d -= 1
-                        d = str(d)
-                        paste.value = f'{d} {ph_time_new_formated} PM SAT WOE'
-                        cell_list = silk2.range("B4:D50")
-                        for cell in cell_list:
-                            cell.value = ""
-                        silk2.update_cells(cell_list, value_input_option='USER_ENTERED')
-                    elif ph_time_formated == t_silk4_archive:
-                        d = ph_time_unformated.strftime("%d")
-                        d = int(d)
-                        d -= 1
-                        d = str(d)
-                        paste.value = f'{d} {ph_time_new_formated} PM SUN WOE'
-                        cell_list = silk4.range("B4:D50")
-                        for cell in cell_list:
-                            cell.value = ""
-                        silk4.update_cells(cell_list, value_input_option='USER_ENTERED')
-                elif count == 1:
-                    paste.value = ""
-                else:
-                    try:
-                        paste.value = data_pasted[count - 2]
-                    except IndexError:
-                        break
-                count += 1
-            wsheet.update_cells(paste_list, value_input_option='USER_ENTERED')
-
-            cell_list = rostersheet.range(roster_range)
-
-            for cell in cell_list:
-                cell.value = ""
-
-            rostersheet.update_cells(cell_list, value_input_option='USER_ENTERED')
-            continue
-        # Timed event [auto-reminder]: a soft reminder message into #announcement. Remove on next event
-        elif isremindenabled and not isreminded1 and ph_time_formated in tf_remind1:
+        # if not isarchived and ph_time_formated in tf_archive:
+        #     isarchived = True
+        #     await botinitsk.send('```Automatically cleared the roster! Please use /att y/n, y/n again to register your attendance.```')
+        #     await botinitsk.send('```An archive of the latest roster was saved in WoE Roster Archive Spreadsheet.```')
+        #     await botinitbk.send('```Automatically cleared the roster! Please use /att y/n, y/n again to register your attendance.```')
+        #     await botinitbk.send('```An archive of the latest roster was saved in WoE Roster Archive Spreadsheet.```')
+        #     try:
+        #         next_row = next_available_row(wsheet, 1)
+        #     except ValueError as e:
+        #         print(f'next_row returned {e}')
+        #         next_row = 1
+        #     copy_list2 = silk2.range("B4:D51")
+        #     copy_list4 = silk4.range("B4:D51")
+        #     paste_list = rostersheet.range(next_row, 1, next_row + 45, 3)
+        #     count = 0
+        #     newformat = "%B %Y"
+        #     ph_time = pytz.timezone('Asia/Manila')
+        #     ph_time_unformated = datetime.now(ph_time)
+        #     ph_time_new_formated = ph_time_unformated.strftime(newformat)
+        #     if ph_time_formated == t_silk2_archive:
+        #         for copy in copy_list2:
+        #             data_pasted.append(copy.value)
+        #     elif ph_time_formated == t_silk4_archive:
+        #         for copy in copy_list4:
+        #             data_pasted.append(copy.value)
+        #     for paste in paste_list:
+        #         if count == 0:
+        #             if ph_time_formated == t_silk2_archive:
+        #                 d = ph_time_unformated.strftime("%d")
+        #                 d = int(d)
+        #                 d -= 1
+        #                 d = str(d)
+        #                 paste.value = f'{d} {ph_time_new_formated} PM SAT WOE'
+        #                 cell_list = silk2.range("B4:D50")
+        #                 for cell in cell_list:
+        #                     cell.value = ""
+        #                 silk2.update_cells(cell_list, value_input_option='USER_ENTERED')
+        #             elif ph_time_formated == t_silk4_archive:
+        #                 d = ph_time_unformated.strftime("%d")
+        #                 d = int(d)
+        #                 d -= 1
+        #                 d = str(d)
+        #                 paste.value = f'{d} {ph_time_new_formated} PM SUN WOE'
+        #                 cell_list = silk4.range("B4:D50")
+        #                 for cell in cell_list:
+        #                     cell.value = ""
+        #                 silk4.update_cells(cell_list, value_input_option='USER_ENTERED')
+        #         elif count == 1:
+        #             paste.value = ""
+        #         else:
+        #             try:
+        #                 paste.value = data_pasted[count - 2]
+        #             except IndexError:
+        #                 break
+        #         count += 1
+        #     wsheet.update_cells(paste_list, value_input_option='USER_ENTERED')
+        #
+        #     cell_list = rostersheet.range(roster_range)
+        #
+        #     for cell in cell_list:
+        #         cell.value = ""
+        #
+        #     rostersheet.update_cells(cell_list, value_input_option='USER_ENTERED')
+        #     continue
+        # # Timed event [auto-reminder]: a soft reminder message into #announcement. Remove on next event
+        if isremindenabled and not isreminded1 and ph_time_formated in tf_remind1:
             if debugger: await botinitsk.send(f'{feedback_debug} {ph_time_formated} Reminder1 isreminded1={isreminded1} START')
             isreminded1 = True
             try:
@@ -316,7 +310,7 @@ For those who haven't: {feedback_noangrypingplz}'''
                 if debugger: #send to test server if on debugmode
                     msg1 = await botinitsk.send(msgstr)
                 else:
-                    msg1 = await botinitc.send(msgstr)
+                    msg1 = await botinitbk.send(msgstr)
                 datasheet.update_cell(2, 9, str(msg1.id) ) # save as string to avoid Excel nr truncation
                 if debugger: await botinitsk.send(f'{feedback_debug} msg1 ID saved: `{msg1.id}`')
             except Exception as e:
@@ -338,10 +332,10 @@ For those who haven't: {feedback_noangrypingplz}'''
                             msg1 = await botinitsk.fetch_message(msgid)
                         else:
                             try: # fetch from announcement or bot
-                                msg1 = await botinitc.fetch_message(msgid)
+                                msg1 = await botinitbk.fetch_message(msgid)
                             except Exception as e:
                                 try:
-                                    msg1 = await botinitc.fetch_message(msgid)
+                                    msg1 = await botinitbk.fetch_message(msgid)
                                 except Exception as e:
                                     pass
                         await msg1.delete()
@@ -362,7 +356,7 @@ For those who haven't: {feedback_noangrypingplz}'''
                     for discordtag in ping_tags:
                         taglist += '<@' + str(discordtag) + '>, '
                     if taglist != '':
-                        msg1 = await botinitc.send(f'{feedback_automsg} Hi {taglist}you have not registered your attendance yet. <:peeposad:702156649992945674> Next time, {feedback_noangrypingplz}')
+                        msg1 = await botinitbk.send(f'{feedback_automsg} Hi {taglist}you have not registered your attendance yet. <:peeposad:702156649992945674> Next time, {feedback_noangrypingplz}')
                 datasheet.update_cell(2, 9, str(msg1.id) ) # save as string to avoid Excel nr truncation
                 if debugger: await botinitsk.send(f'{feedback_debug} msg1 ID saved: `{msg1.id}`')
             except Exception as e:
