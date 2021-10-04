@@ -395,21 +395,7 @@ async def on_member_join(member):
         role = discord.utils.get(member.guild.roles, name="new recruit")
     await member.add_roles(role)
         
-@client.command()
-async def load(ctx, extension):
-    client.load_extension(f'cogs.{extension}')
-    await ctx.send(f'Cog: {extension}.py loaded')
 
-@client.command()
-async def unload(ctx, extension):
-    client.unload_extension(f'cogs.{extension}')
-    await ctx.send(f'Cog: {extension}.py unloaded')
-
-@client.command()
-async def reload(ctx, extension):
-    client.unload_extension(f'cogs.{extension}')
-    client.load_extension(f'cogs.{extension}')
-    await ctx.send(f'Cog: {extension}.py reloaded')
 
 # toggle isremindenabled
 @client.command()
@@ -525,6 +511,27 @@ async def jytest(ctx):
         await ctx.send(f'`jytest` end')
     except Exception as e:
         await ctx.send(f'Error: `{e}`')
+
+
+
+@client.command()
+async def load(ctx, extension):
+    client.load_extension(f'cogs.{extension}')
+    await ctx.send(f'Cog: {extension}.py loaded')
+
+
+@client.command()
+async def unload(ctx, extension):
+    client.unload_extension(f'cogs.{extension}')
+    await ctx.send(f'Cog: {extension}.py unloaded')
+
+
+@client.command()
+async def reload(ctx, extension):
+    client.unload_extension(f'cogs.{extension}')
+    client.load_extension(f'cogs.{extension}')
+    await ctx.send(f'Cog: {extension}.py reloaded')
+
 
 for filename in os.listdir('./cogs'):
     if filename.endswith('.py'):
