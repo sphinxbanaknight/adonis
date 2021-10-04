@@ -618,7 +618,8 @@ For Wizard: {list_wizard}
                     cell.value = role.value
                 elif count == 2:
                     # await ctx.send(f'test6 {ign.value} {role.value} {count}')
-                    if arglist[0].lower() in answeryes:
+                    if arguments.lower() in answeryes:
+                        await ctx.send(f"{arguments}")
                         cell.value = 'Yes'
                         yes = 1
                     else:
