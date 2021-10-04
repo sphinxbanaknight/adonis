@@ -363,7 +363,7 @@ class Clears(commands.Cog):
                                 fullofsheet.update_cell(next_row, 3, str(member.name))
                                 if debugger: await ctx.send(f'{feedback_debug} Updating {cell.value} ID at [{next_row}, 2] to {member.id}')
                                     #break
-                    next_row += 1
+                                next_row += 1
                     await msgprogress.edit(content="Refreshing Discord IDs for all members in Adonis Roster... Completed.")
                 except Exception as e:
                     await msgprogress.edit(content="Refreshing Discord IDs for all members in Adonis Roster... Failed.")
