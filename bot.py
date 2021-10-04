@@ -28,10 +28,8 @@ data_json = basedir+'/cogs/client_secret.json'
 creds = ServiceAccountCredentials.from_json_keyfile_name(data_json, scope)
 gc = gspread.authorize(creds)
 
-takte = gc.open('CRESENCE ROSTER')
+takte = gc.open('Tempo')
 rostersheet = takte.worksheet('WoE Roster')
-silk2 = takte.worksheet('WoE Roster 2') 
-silk4 = takte.worksheet('WoE Roster 4')
 fullofsheet = takte.worksheet('Full IGNs')
 datasheet = takte.worksheet('Data')
 
