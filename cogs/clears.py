@@ -143,12 +143,12 @@ feedback_debug = '`[DEBUGINFO] `'
 
 
 def next_available_row(sheet, column, lastrow):
-    cols = sheet.range(4, column, lastrow, column)
+    cols = sheet.range(3, column, lastrow, column)
     try:
         return max([cell.row for cell in cols if cell.value]) + 1
     except Exception as e:
         print(f'Handled exception: {e}, returning 3rd row')
-        return 4
+        return 3
 
 
 def next_available_row_p1(sheet, column):
@@ -685,7 +685,7 @@ For Wizard: {list_wizard}
             except Exception as e:
                 print(f'namae returned {e}')
             try:
-                kurasu = [item for item in rostersheet.col_values(8) if item and item != 'Class' and item != 'Silk 2' and item != 'Silk 4']
+                kurasu = [item for item in rostersheet.col_values(8) if item and item != 'Class' and item != 'FE WOE']
             except Exception as e:
                 print(f'kurasu returned {e}')
             try:
@@ -733,8 +733,6 @@ For Wizard: {list_wizard}
             except Exception as e:
                 print(f'add field returned {e}')
                 return
-
-
             try:
                 await ctx.send(embed=embeded)
             except Exception as e:
