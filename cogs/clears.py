@@ -805,15 +805,15 @@ PLEASE MIND THE COMMA, IT ENSURES THAT I SEE EVERY ARGUMENT:
             for cell in cell_list:
                 if not cell == "" and not cell == None:
                     get_ATK.append(cell.value)
-            cell_list = rostersheet.range("M34:M45")
-            get_third = [""]
-            for cell in cell_list:
-                if not cell == "" and not cell == None:
-                    get_third.append(cell.value)
+            #cell_list = rostersheet.range("M34:M45")
+            # get_third = [""]
+            # for cell in cell_list:
+            #     if not cell == "" and not cell == None:
+            #         get_third.append(cell.value)
 
             MATK_names = [item for item in get_MATK if item]
             ATK_names = [item for item in get_ATK if item]
-            THIRD_names = [item for item in get_third if item]
+            # THIRD_names = [item for item in get_third if item]
 
             try:
                 embeded = discord.Embed(title="Current Party List", description="A list of our Current Party List",
@@ -825,15 +825,15 @@ PLEASE MIND THE COMMA, IT ENSURES THAT I SEE EVERY ARGUMENT:
             x = 0
             ATKpt = ''
             MATKpt = ''
-            THIRDpt = ''
+            # THIRDpt = ''
             for x in range(len(MATK_names)):
                 MATKpt += MATK_names[x] + '\n'
             x = 0
             for x in range(len(ATK_names)):
                 ATKpt += ATK_names[x] + '\n'
             x = 0
-            for x in range(len(THIRD_names)):
-                THIRDpt += THIRD_names[x] + '\n'
+            # for x in range(len(THIRD_names)):
+            #     THIRDpt += THIRD_names[x] + '\n'
             try:
                 embeded.add_field(name="ATK Party", value=f'{ATKpt}', inline=True)
             except Exception as e:
@@ -844,11 +844,11 @@ PLEASE MIND THE COMMA, IT ENSURES THAT I SEE EVERY ARGUMENT:
             except Exception as e:
                 print(f'add field returned {e}')
                 return
-            try:
-                embeded.add_field(name="SECOND GUILD Party", value=f'{THIRDpt}', inline=True)
-            except Exception as e:
-                print(f'add field returned {e}')
-                return
+            # try:
+            #     embeded.add_field(name="SECOND GUILD Party", value=f'{THIRDpt}', inline=True)
+            # except Exception as e:
+            #     print(f'add field returned {e}')
+            #     return
             try:
                 await ctx.send(embed=embeded)
             except Exception as e:
