@@ -506,12 +506,7 @@ For Wanderer: {list_wand}
                         break
                     next_row += 1
                 if change == 0:
-                    #await ctx.send(f'testinggg')
-                    #try:
                     next_row = next_available_row(rostersheet, 2, 99)
-                    #except Exception as e:
-                    #    await ctx.send(f'Failed: {e}')
-                #await ctx.send(f'test')
                 count = 0
 
                 cell_list = rostersheet.range(next_row, 2, next_row, 5)
@@ -530,56 +525,31 @@ For Wanderer: {list_wand}
                             cell.value = ""
                             optionalcomment = ""
                     count += 1
-                    
-                #await ctx.send(f'test2')
+
                 rostersheet.update_cells(cell_list, value_input_option='USER_ENTERED')
                 await ctx.send(f'```{ctx.author.name} has enlisted {darole} with IGN: {arglist[0]}{optionalcomment}.```')
                 if change == 1:
-                    finding_column2 = celesheet.range("C3:C50".format(celesheet.row_count))
-                    finding_columnsilk2 = silk2.range("B4:B51".format(silk2.row_count))
-                    finding_columnsilk4 = silk4.range("B4:B51".format(silk4.row_count))
-                    foundign2 = [found for found in finding_column2 if found.value == ign.value]
-                    foundignsilk2 = [found for found in finding_columnsilk2 if found.value == ign.value]
-                    foundignsilk4 = [found for found in finding_columnsilk4 if found.value == ign.value]
+                    findAttendance = rostersheet.range("G4:G51".format(rostersheet.row_count))
+                    foundAttendanceIGN = [found for found in findAttendance if found.value == ign.value]
 
-                    if foundignsilk2:
-                        cell_list = silk2.range(foundignsilk2[0].row, 2, foundignsilk2[0].row, 4)
+                    if foundAttendanceIGN:
+                        cell_list = rostersheet.range(foundAttendanceIGN[0].row, 2, foundAttendanceIGN[0].row, 4)
                         for cell in cell_list:
                             cell.value = ""
-                        silk2.update_cells(cell_list, value_input_option='USER_ENTERED')
-                        change = 0
-                    if foundignsilk4:
-                        cell_list = silk4.range(foundignsilk4[0].row, 2, foundignsilk4[0].row, 4)
-                        for cell in cell_list:
-                            cell.value = ""
-                        silk4.update_cells(cell_list, value_input_option='USER_ENTERED')
+                        rostersheet.update_cells(cell_list, value_input_option='USER_ENTERED')
                         change = 0
                     # Notify only once for any missing attendance
-                    if foundignsilk2 or foundignsilk4:
+                    if foundAttendanceIGN:
                         await ctx.send(
                             f'{ctx.message.author.mention}``` I found another character of yours that answered for attendance already, I have cleared that. Please use /att y/n, y/n again in order to register your attendance.```')
-
-                    if foundign2:
-                        cell_list = celesheet.range(foundign2[0].row, 2, foundign2[0].row, 20)
-                        for cell in cell_list:
-                            cell.value = ""
-                        celesheet.update_cells(cell_list, value_input_option='USER_ENTERED')
-                        #await ctx.send(f'``` I found another character of yours that answered celery preferences already, I have cleared that. Please use /celery again in order to list your preferred salary.```')
-                        change = 0
                     else:
-                        if not foundignsilk4 or not foundignsilk2:
+                        if not foundAttendanceIGN:
                             await ctx.send(f'{feedback_attplz}')
-                        #if not foundign2:
-                            #await ctx.send(f'{feedback_celeryplz}')
-                            
                         change = 0
                 else:
                     await ctx.send(f'{ctx.message.author.mention} {feedback_attplz}')
                     #await ctx.send(f'{feedback_celeryplz}')
             await autosort(ctx, rostersheet)
-            await autosort(ctx, celesheet)
-            await autosort(ctx, silk2)
-            await autosort(ctx, silk4)
         else:
             await ctx.send("Wrong channel! Please use #bot.")
 
