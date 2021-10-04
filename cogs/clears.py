@@ -344,7 +344,7 @@ class Clears(commands.Cog):
         channel = ctx.message.channel
         commander_name = ctx.author.name
         commander = ctx.author
-        #adonisRole = discord.utils.find(lambda r: r.name == 'Adonis', ctx.message.server.roles)
+        adonisRole = discord.utils.find(lambda r: r.name == 'Adonis', guild.roles)
         
         if channel.id in botinit_id:
             if commander.id in authorized_id:
