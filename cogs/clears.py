@@ -120,8 +120,7 @@ answerblues = ['blues', 'sp pots', 'siege blues', 'blue', 'siege blue']
 
 ############################# FEEDBACKS #############################
 
-feedback_attplz = '```Please use /att y/n, y/n to register your attendance.```'
-feedback_celeryplz = '```Please use /celery to list your salary preferences.```'
+feedback_attplz = '```Please use /att y/n to register your attendance.```'
 feedback_properplz = 'Please send a proper syntax: '
 feedback_debug = '`[DEBUGINFO] `'
 
