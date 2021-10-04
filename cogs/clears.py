@@ -148,7 +148,7 @@ def next_available_row(sheet, column, lastrow):
         return max([cell.row for cell in cols if cell.value]) + 1
     except Exception as e:
         print(f'Handled exception: {e}, returning 3rd row')
-        return 3
+        return 4
 
 
 def next_available_row_p1(sheet, column):
