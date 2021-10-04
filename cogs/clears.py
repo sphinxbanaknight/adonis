@@ -70,25 +70,40 @@ p3role_range = "P32:P43"
 fullidname_range = "B4:C100"
 
 ############### Roles #######################################
-list_ab = ['ab', 'arch bishop', 'arch', 'bishop', 'priest', 'healer', 'buffer']
-list_doram = ['cat', 'doram']
-list_gene = ['gene', 'genetic']
-list_gx = ['gx', 'guillotine cross', 'glt. cross']
-list_kage = ['kagerou', 'kage']
-list_mech = ['mech', 'mechanic', 'mado']
-list_mins = ['mins', 'minstrel' ]
-list_obo = ['obo', 'oboro', 'ninja']
-list_ranger = ['ranger', 'range']
-list_rebel = ['rebel', 'reb', 'rebellion']
-list_rg = ['rg', 'royal guard', 'devo',]
-list_rk = ['rk', 'rune knight', 'db']
-list_sc = ['sc', 'shadow chaser']
-list_se = ['se', 'star emperor', 'hater']
-list_sorc = ['sorc', 'sorcerer']
-list_sr = ['sr', 'soul reaper', 'linker']
-list_sura = ['sura', 'shura', 'asura', 'ashura']
-list_wand = ['wanderer', 'wand', 'wandie', 'wandy']
-list_wl = ['wl', 'warlock', 'tetra', 'crimson rock', 'cr']
+# list_ab = ['ab', 'arch bishop', 'arch', 'bishop', 'priest', 'healer', 'buffer']
+# list_doram = ['cat', 'doram']
+# list_gene = ['gene', 'genetic']
+# list_gx = ['gx', 'guillotine cross', 'glt. cross']
+# list_kage = ['kagerou', 'kage']
+# list_mech = ['mech', 'mechanic', 'mado']
+# list_mins = ['mins', 'minstrel' ]
+# list_obo = ['obo', 'oboro', 'ninja']
+# list_ranger = ['ranger', 'range']
+# list_rebel = ['rebel', 'reb', 'rebellion']
+# list_rg = ['rg', 'royal guard', 'devo',]
+# list_rk = ['rk', 'rune knight', 'db']
+# list_sc = ['sc', 'shadow chaser']
+# list_se = ['se', 'star emperor', 'hater']
+# list_sorc = ['sorc', 'sorcerer']
+# list_sr = ['sr', 'soul reaper', 'linker']
+# list_sura = ['sura', 'shura', 'asura', 'ashura']
+# list_wand = ['wanderer', 'wand', 'wandie', 'wandy']
+# list_wl = ['wl', 'warlock', 'tetra', 'crimson rock', 'cr']
+
+list_priest = ['priest', 'p', 'healer']
+list_monk = ['monk', 'asura', 'champ', 'champion']
+list_blacksmith = ['bs', 'blacksmith', 'smith']
+list_alchemist = ['alchemist', 'alch', 'alche']
+list_ninja = ['ninja', 'fs']
+list_bard = ['bard', 'songs']
+list_dancer = ['dancer', 'dance']
+list_hunter = ['ds', 'blitz', 'hunter']
+list_knight = ['knight', 'bb', 'bowling']
+list_crusader = ['xsader', 'crusader', 'devo']
+list_assassin = ['assassin', 'sin']
+list_rogue = ['rogue', 'grimtooth']
+list_sage = ['sage']
+list_wizard = ['wiz', 'wizard']
       
   
 ############# Responses #####################################
@@ -183,46 +198,35 @@ async def autosort(ctx, sheet):
         await ctx.send(f'{feedback_debug} Error on sorting {sheet.title}: `{e}`')
     return
 
-
 def get_jobname(input):
-    if input.lower() in list_ab:
-        jobname = 'AB'
-    elif input.lower() in list_doram:
-        jobname = 'Doram'
-    elif input.lower() in list_gene:
-        jobname = 'Genetic'
-    elif input.lower() in list_gx:
-        jobname = 'GX'
-    elif input.lower() in list_kage:
-        jobname = 'Kagerou'
-    elif input.lower() in list_mech:
-        jobname = 'Mado'
-    elif input.lower() in list_mins:
-        jobname = 'Minstrel'
-    elif input.lower() in list_obo:
-        jobname = 'Oboro'
-    elif input.lower() in list_ranger:
-        jobname = 'Ranger'
-    elif input.lower() in list_rebel:
-        jobname = 'Rebel'
-    elif input.lower() in list_rg:
-        jobname = 'RG'
-    elif input.lower() in list_rk:
-        jobname = 'RK'
-    elif input.lower() in list_sc:
-        jobname = 'SC'
-    elif input.lower() in list_se:
-        jobname = 'Star Emperor'
-    elif input.lower() in list_sorc:
-        jobname = 'Sorc'
-    elif input.lower() in list_sr:
-        jobname = 'Soul Reaper'
-    elif input.lower() in list_sura:
-        jobname = 'Sura'
-    elif input.lower() in list_wand:
-        jobname = 'Wandie'
-    elif input.lower() in list_wl:
-        jobname = 'WL'
+    if input.lower() in list_priest:
+        jobname = 'Priest'
+    elif input.lower() in list_monk:
+        jobname = 'Monk'
+    elif input.lower() in list_blacksmith:
+        jobname = 'Blacksmith'
+    elif input.lower() in list_alchemist:
+        jobname = 'Alchemist'
+    elif input.lower() in list_ninja:
+        jobname = 'Ninja'
+    elif input.lower() in list_bard:
+        jobname = 'Bard'
+    elif input.lower() in list_dancer:
+        jobname = 'Dancer'
+    elif input.lower() in list_hunter:
+        jobname = 'Hunter'
+    elif input.lower() in list_knight:
+        jobname = 'Knight'
+    elif input.lower() in list_crusader:
+        jobname = 'Crusader'
+    elif input.lower() in list_assassin:
+        jobname = 'Assassin'
+    elif input.lower() in list_rogue:
+        jobname = 'Rogue'
+    elif input.lower() in list_sage:
+        jobname = 'Sage'
+    elif input.lower() in list_wizard:
+        jobname = 'Wizard'
     else:
         jobname = ''
     return jobname
@@ -483,15 +487,20 @@ class Clears(commands.Cog):
                 if darole == '':
                     await ctx.send(f'''Here are the allowed classes: 
 ```
-For Doram: {list_doram}
-For Genetic: {list_gene}
-For Mechanic: {list_mech}
-For Minstrel: {list_mins}
-For Ranger: {list_ranger}
-For Sorcerer: {list_sorc}
-For Oboro: {list_obo}
-For Rebellion: {list_rebel}
-For Wanderer: {list_wand}
+For Priest: {list_priest}
+For Monk: {list_monk}
+For Blacksmith: {list_blacksmith}
+For Alchemist: {list_alchemist}
+For Ninja: {list_ninja}
+For Bard: {list_bard}
+For Dancer: {list_dancer}
+For Hunter: {list_hunter}
+For Knight: {list_knight}
+For Crusader: {list_crusader}
+For Assassin: {list_assassin}
+For Rogue: {list_rogue}
+For Sage: {list_sage}
+For Wizard: {list_wizard}
 ```
                                     ''')
                     return
