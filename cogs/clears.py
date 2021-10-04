@@ -581,7 +581,7 @@ For Wizard: {list_wizard}
         
         next_row = 3
         found = 0
-        cell_list = rostersheet.range("B3:B99")
+        cell_list = rostersheet.range("G3:G99")
         for cell in cell_list:
             if cell.value == commander_name:
                 found = 1
@@ -594,22 +594,20 @@ For Wizard: {list_wizard}
         ign = rostersheet.cell(next_row, 3)
         role = rostersheet.cell(next_row, 4)
 
-        finding_column2 = silk2.range("B3:B50".format(rostersheet.row_count))
-        finding_column4 = silk4.range("B3:B50".format(rostersheet.row_count))
+        findAttendance = rostersheet.range("G3:G50".format(rostersheet.row_count))
 
-        foundign2 = [found for found in finding_column2 if found.value == ign.value]
-        foundign4 = [found for found in finding_column4 if found.value == ign.value]
+        foundAttendanceIGN = [found for found in findAttendance if found.value == ign.value]
 
         try:
-            if foundign2:
-                change_row = foundign2[0].row
+            if foundAttendanceIGN:
+                change_row = foundAttendanceIGN[0].row
             else:
                 try:
-                    change_row = next_available_row(silk2, 2, 51)
+                    change_row = next_available_row(rostersheet, 2, 51)
                 except ValueError as e:
                     change_row = 4
-            if debugger: await ctx.send(f'{feedback_debug} SILK 2 change_row=`{change_row}`')
-            cell_list = silk2.range(change_row, 2, change_row, 4)
+            if debugger: await ctx.send(f'{feedback_debug} rostersheet attendance change_row=`{change_row}`')
+            cell_list = rostersheet.range(change_row, 7, change_row, 9)
             count = 0
             # await ctx.send('test2')
             for cell in cell_list:
@@ -630,66 +628,11 @@ For Wizard: {list_wizard}
                     re_answer = cell.value
                 count += 1
         except Exception as e:
-            await ctx.send(f'Error on SILK 2: `{e}`')
+            await ctx.send(f'Error on rostersheet: `{e}`')
             return
         
-        # Ignore silk 2 entry if entered between post-silk 2 and pre-silk 4 time
-        isskip = False
-        try:
-            my_time = pytz.timezone('Asia/Kuala_Lumpur')
-            my_time_unformatted = datetime.datetime.now(my_time)
-            my_dow = my_time_unformatted.strftime('%A')
-            my_timeonly = my_time_unformatted.time()
-            woeendtime = datetime.time(0, 0) # both silk 2 and 4 end on 00:00:00
-            if debugger: await ctx.send(f'{feedback_debug} dayofweek=`{my_dow}` timeonly=`{my_timeonly}` woeendtime=`{woeendtime}`')
-            if my_dow == 'Sunday' and my_timeonly >= woeendtime:
-                isskip = True
-        except Exception as e:
-            await ctx.send(f'Time check error: `{e}`')
-        
-        if isskip:
-            await ctx.send(f'```Ignoring {ctx.author.name}\'s answer {re_answer} for SILK 2 as the WoE for this week has already passed.```')
-        else:
-            silk2.update_cells(cell_list, value_input_option='USER_ENTERED')
-            await ctx.send(f'```{ctx.author.name} said {re_answer} for SILK 2 with IGN: {ign.value}, Class: {role.value}.```')
-        yes = 0
-        try:
-            if foundign4:
-                change_row = foundign4[0].row
-            else:
-                try:
-                    change_row = next_available_row(silk4, 2, 51)
-                except ValueError as e:
-                    change_row = 4
-                cell_list = silk4.range(change_row, 2, change_row, 4)
-            if debugger: await ctx.send(f'{feedback_debug} SILK 4 change_row=`{change_row}`')
-            cell_list = silk4.range(change_row, 2, change_row, 4)
-            count = 0
-            # await ctx.send('test2')
-            for cell in cell_list:
-                # await ctx.send(f'test3 {ign.value} {role.value} {count}')
-                if count == 0:
-                    # await ctx.send(f'test4 {ign.value} {role.value} {count}')
-                    cell.value = ign.value
-                elif count == 1:
-                    # await ctx.send(f'test5 {ign.value} {role.value} {count}')
-                    cell.value = role.value
-                elif count == 2:
-                    # await ctx.send(f'test6 {ign.value} {role.value} {count}')
-                    if arglist[1].lower() in answeryes:
-                        cell.value = 'Yes'
-                        yes = 1
-                    else:
-                        cell.value = 'No'
-                    re_answer = cell.value
-                count += 1
-            silk4.update_cells(cell_list, value_input_option='USER_ENTERED')
-            await ctx.send(f'```{ctx.author.name} said {re_answer} for SILK 4 with IGN: {ign.value}, Class: {role.value}.```')
-        except Exception as e:
-            await ctx.send(f'Error on SILK 4: `{e}`')
-            return
-        await autosort(ctx, silk2)
-        await autosort(ctx, silk4)
+
+
 
     @commands.command()
     async def list(self, ctx):
