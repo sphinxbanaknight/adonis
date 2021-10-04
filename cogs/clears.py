@@ -574,8 +574,7 @@ For Wizard: {list_wizard}
         arglist = [x.strip() for x in arguments.split(',')]
         no_of_args = len(arglist)
         if (no_of_args != 1
-                or not (arglist[0].lower() in answeryes or arglist[0].lower() in answerno)
-            ):
+                or not (arglist[0].lower() in answeryes or arglist[0].lower() in answerno)):
             await ctx.send(f'{feedback_properplz} `/att y/n` *E.g. `/att y` to confirm attendance')
             return
         
@@ -602,9 +601,9 @@ For Wizard: {list_wizard}
                 change_row = foundAttendanceIGN[0].row
             else:
                 try:
-                    change_row = next_available_row(rostersheet, 2, 51)
+                    change_row = next_available_row(rostersheet, 3, 51)
                 except ValueError as e:
-                    change_row = 4
+                    change_row = 3
             if debugger: await ctx.send(f'{feedback_debug} rostersheet attendance change_row=`{change_row}`')
             cell_list = rostersheet.range(change_row, 7, change_row, 9)
             count = 0
