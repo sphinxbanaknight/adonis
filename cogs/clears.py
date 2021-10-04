@@ -354,8 +354,11 @@ class Clears(commands.Cog):
                     for cell in cell_list:
                         for member in guild.members:
                             #await ctx.send(f'{member}')
-                            if cell.value == member.name:
+                            if member.bot:
+                                continue
+                            else:
                                 fullofsheet.update_cell(next_row, 2, str(member.id))
+                                fullofsheet.update_cell(next_row, 3, str(member.name))
                                 if debugger: await ctx.send(f'{feedback_debug} Updating {cell.value} ID at [{next_row}, 2] to {member.id}')
                                 break
                         next_row += 1
@@ -590,11 +593,10 @@ For Wanderer: {list_wand}
         
         arglist = [x.strip() for x in arguments.split(',')]
         no_of_args = len(arglist)
-        if (no_of_args != 2
+        if (no_of_args != 1
                 or not (arglist[0].lower() in answeryes or arglist[0].lower() in answerno)
-                or not (arglist[1].lower() in answeryes or arglist[1].lower() in answerno)
             ):
-            await ctx.send(f'{feedback_properplz} `/att y/n, y/n` *E.g. `/att y, y` to confirm attend both Silk 2 and 4*')
+            await ctx.send(f'{feedback_properplz} `/att y/n` *E.g. `/att y` to confirm attend both Silk 2')
             return
         
         next_row = 3
