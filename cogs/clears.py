@@ -143,7 +143,7 @@ feedback_debug = '`[DEBUGINFO] `'
 
 
 def next_available_row(sheet, column, lastrow):
-    cols = sheet.range(3, column, lastrow, column)
+    cols = sheet.range(4, column, lastrow, column)
     try:
         return max([cell.row for cell in cols if cell.value]) + 1
     except Exception as e:
