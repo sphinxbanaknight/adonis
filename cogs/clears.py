@@ -348,7 +348,7 @@ class Clears(commands.Cog):
         if channel.id in botinit_id:
             if commander.id in authorized_id:
                 try:
-                    msgprogress = await ctx.send('Refreshing Discord IDs for all members in Cresence Roster...')
+                    msgprogress = await ctx.send('Refreshing Discord IDs for all members in Adonis Roster...')
                     cell_list = fullofsheet.range("C4:C100")
                     next_row = 4
                     for cell in cell_list:
@@ -359,9 +359,9 @@ class Clears(commands.Cog):
                                 if debugger: await ctx.send(f'{feedback_debug} Updating {cell.value} ID at [{next_row}, 2] to {member.id}')
                                 break
                         next_row += 1
-                    await msgprogress.edit(content="Refreshing Discord IDs for all members in Cresence Roster... Completed.")
+                    await msgprogress.edit(content="Refreshing Discord IDs for all members in Adonis Roster... Completed.")
                 except Exception as e:
-                    await msgprogress.edit(content="Refreshing Discord IDs for all members in Cresence Roster... Failed.")
+                    await msgprogress.edit(content="Refreshing Discord IDs for all members in Adonis Roster... Failed.")
                     await ctx.send(e)
             else:
                 await ctx.send(f'*Nice try pleb.*')
