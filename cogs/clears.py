@@ -351,17 +351,17 @@ class Clears(commands.Cog):
                     msgprogress = await ctx.send('Refreshing Discord IDs for all members in Adonis Roster...')
                     cell_list = fullofsheet.range("C4:C100")
                     next_row = 4
-                    for cell in cell_list:
-                        for member in guild.members:
-                            #await ctx.send(f'{member}')
-                            if member.bot:
-                                continue
-                            else:
-                                fullofsheet.update_cell(next_row, 2, str(member.id))
-                                fullofsheet.update_cell(next_row, 3, str(member.name))
-                                if debugger: await ctx.send(f'{feedback_debug} Updating {cell.value} ID at [{next_row}, 2] to {member.id}')
-                                break
-                        next_row += 1
+
+                    for member in guild.members:
+                        #await ctx.send(f'{member}')
+                        if member.bot:
+                            continue
+                        else:
+                            fullofsheet.update_cell(next_row, 2, str(member.id))
+                            fullofsheet.update_cell(next_row, 3, str(member.name))
+                            if debugger: await ctx.send(f'{feedback_debug} Updating {cell.value} ID at [{next_row}, 2] to {member.id}')
+                                #break
+                    next_row += 1
                     await msgprogress.edit(content="Refreshing Discord IDs for all members in Adonis Roster... Completed.")
                 except Exception as e:
                     await msgprogress.edit(content="Refreshing Discord IDs for all members in Adonis Roster... Failed.")
