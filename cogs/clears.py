@@ -344,6 +344,7 @@ class Clears(commands.Cog):
         channel = ctx.message.channel
         commander_name = ctx.author.name
         commander = ctx.author
+        adonisRole = discord.utils.find(lambda r: r.name == 'Adonis', ctx.message.server.roles)
         
         if channel.id in botinit_id:
             if commander.id in authorized_id:
@@ -357,10 +358,11 @@ class Clears(commands.Cog):
                         if member.bot:
                             continue
                         else:
-                            fullofsheet.update_cell(next_row, 2, str(member.id))
-                            fullofsheet.update_cell(next_row, 3, str(member.name))
-                            if debugger: await ctx.send(f'{feedback_debug} Updating {cell.value} ID at [{next_row}, 2] to {member.id}')
-                                #break
+                            if adonisRole in member.roles:
+                                fullofsheet.update_cell(next_row, 2, str(member.id))
+                                fullofsheet.update_cell(next_row, 3, str(member.name))
+                                if debugger: await ctx.send(f'{feedback_debug} Updating {cell.value} ID at [{next_row}, 2] to {member.id}')
+                                    #break
                     next_row += 1
                     await msgprogress.edit(content="Refreshing Discord IDs for all members in Adonis Roster... Completed.")
                 except Exception as e:
