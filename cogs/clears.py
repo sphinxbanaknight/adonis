@@ -576,12 +576,12 @@ For Wizard: {list_wizard}
         if (no_of_args != 1
                 or not (arglist[0].lower() in answeryes or arglist[0].lower() in answerno)
             ):
-            await ctx.send(f'{feedback_properplz} `/att y/n` *E.g. `/att y` to confirm attend both Silk 2')
+            await ctx.send(f'{feedback_properplz} `/att y/n` *E.g. `/att y` to confirm attendance')
             return
         
         next_row = 3
         found = 0
-        cell_list = rostersheet.range("B3:B99")
+        cell_list = rostersheet.range("B3:B52")
         for cell in cell_list:
             if cell.value == commander_name:
                 found = 1
@@ -595,7 +595,6 @@ For Wizard: {list_wizard}
         role = rostersheet.cell(next_row, 4)
 
         findAttendance = rostersheet.range("G3:G50".format(rostersheet.row_count))
-
         foundAttendanceIGN = [found for found in findAttendance if found.value == ign.value]
 
         try:
