@@ -48,7 +48,7 @@ c_server = 800129405350707200
 servers = [sk_server, bk_server, c_server]
 
 sk_bot = 401212001239564288
-bk_bot = 691205255664500757
+bk_bot = 894140381002878976 #BK p0woe
 bk_ann = 695801936095740024 #BK #announcement
 c_bot = 800129405350707200
 botinit_id = [sk_bot, bk_bot, c_bot]

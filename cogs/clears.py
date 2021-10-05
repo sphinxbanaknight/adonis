@@ -48,7 +48,7 @@ c_server = 800129405350707200
 servers = [sk_server, bk_server, c_server]
 
 sk_bot = 401212001239564288
-bk_bot = 691205255664500757
+bk_bot = 894140381002878976 #BK p0woe
 bk_ann = 695801936095740024 #BK #announcement
 c_bot = 800129405350707200
 botinit_id = [sk_bot, bk_bot, c_bot]
@@ -233,7 +233,7 @@ def get_jobname(input):
 
 
 def reminder():
-    attlist = [item for item in rostersheet.col_values(7) if item and item != 'IGN' and item != 'Next WOE:']
+    attlist = [item for item in rostersheet.col_values(9) if item and item != 'IGN' and item != 'Next WOE:']
     ignlist = [item for item in rostersheet.col_values(3) if item and item != 'IGN' and item != 'READ THE NOTES AT [README]']
     row = 3
     dsctag = []
@@ -541,7 +541,7 @@ For Wizard: {list_wizard}
                     foundAttendanceIGN = [found for found in findAttendance if found.value == ign.value]
 
                     if foundAttendanceIGN:
-                        cell_list = rostersheet.range(foundAttendanceIGN[0].row, 2, foundAttendanceIGN[0].row, 4)
+                        cell_list = rostersheet.range(foundAttendanceIGN[0].row, 7, foundAttendanceIGN[0].row, 9)
                         for cell in cell_list:
                             cell.value = ""
                         rostersheet.update_cells(cell_list, value_input_option='USER_ENTERED')
