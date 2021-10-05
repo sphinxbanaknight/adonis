@@ -400,7 +400,7 @@ async def togglereminder(ctx):
         else:
             await ctx.send(f'*Nice try pleb.*')
     else:
-        await ctx.send(f'Wrong channel! Please use #bot.')
+        await ctx.send(f'Wrong channel! Please use #p0-woe.')
 
 # Force a timed event run
 @client.command()
@@ -468,7 +468,7 @@ e.g. `/forcetimedevent, remind1, 22:00:Tuesday`''')
         else:
             await ctx.send(f'*Nice try pleb.*')
     else:
-        await ctx.send(f'Wrong channel! Please use #bot.')
+        await ctx.send(f'Wrong channel! Please use #p0-woe.')
 
 # for testing purpose
 @client.command()
@@ -476,7 +476,7 @@ async def jytest(ctx):
     channel = ctx.message.channel
     commander = ctx.author
     if not channel.id in botinit_id:
-        await ctx.send(f'Wrong channel! Please use #bot.')
+        await ctx.send(f'Wrong channel! Please use #p0-woe.')
         return
     elif not commander.id in authorized_id:
         await ctx.send(f'*Nice try pleb.*')
