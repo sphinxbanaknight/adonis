@@ -233,7 +233,7 @@ def get_jobname(input):
 
 
 def reminder():
-    attlist = [item for item in rostersheet.col_values(9) if item and item != 'IGN' and item != 'Next WOE:']
+    attlist = [item for item in rostersheet.col_values(7) if item and item != 'IGN' and item != 'Next WOE:']
     ignlist = [item for item in rostersheet.col_values(3) if item and item != 'IGN' and item != 'READ THE NOTES AT [README]']
     row = 3
     dsctag = []
@@ -292,7 +292,7 @@ class Clears(commands.Cog):
             if debugger: await ctx.send(f'{feedback_debug} Parsing... {remindlist}')
             
             try:
-                embeded = discord.Embed(title = "Reminder List", description = "A list of people who really should /att y/n, y/n immediately", color = 0x00FF00)
+                embeded = discord.Embed(title = "Reminder List", description = "A list of people who really should /att y/n immediately", color = 0x00FF00)
             except Exception as e:
                 print(f'discord embed reminder returned {e}')
                 if debugger: await ctx.send(f'{feedback_debug} Error: `{e}`')
