@@ -48,7 +48,7 @@ c_server = 800129405350707200
 servers = [sk_server, bk_server, c_server]
 
 sk_bot = 401212001239564288
-bk_bot = 894140381002878976 #BK p0woe
+bk_bot = 894973626967805964 #BK p0-attendance
 bk_ann = 695801936095740024 #BK #announcement
 c_bot = 800129405350707200
 botinit_id = [sk_bot, bk_bot, c_bot]
@@ -400,7 +400,7 @@ async def togglereminder(ctx):
         else:
             await ctx.send(f'*Nice try pleb.*')
     else:
-        await ctx.send(f'Wrong channel! Please use #p0-woe.')
+        await ctx.send(f'Wrong channel! Please use #p0-attendance.')
 
 # Force a timed event run
 @client.command()
@@ -468,7 +468,7 @@ e.g. `/forcetimedevent, remind1, 22:00:Tuesday`''')
         else:
             await ctx.send(f'*Nice try pleb.*')
     else:
-        await ctx.send(f'Wrong channel! Please use #p0-woe.')
+        await ctx.send(f'Wrong channel! Please use #p0-attendance.')
 
 # for testing purpose
 @client.command()
@@ -476,7 +476,7 @@ async def jytest(ctx):
     channel = ctx.message.channel
     commander = ctx.author
     if not channel.id in botinit_id:
-        await ctx.send(f'Wrong channel! Please use #p0-woe.')
+        await ctx.send(f'Wrong channel! Please use #p0-attendance.')
         return
     elif not commander.id in authorized_id:
         await ctx.send(f'*Nice try pleb.*')

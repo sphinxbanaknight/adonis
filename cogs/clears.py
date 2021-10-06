@@ -48,7 +48,7 @@ c_server = 800129405350707200
 servers = [sk_server, bk_server, c_server]
 
 sk_bot = 401212001239564288
-bk_bot = 894140381002878976 #BK p0woe
+bk_bot = 894973626967805964 #BK p0woe
 bk_ann = 695801936095740024 #BK #announcement
 c_bot = 800129405350707200
 botinit_id = [sk_bot, bk_bot, c_bot]
@@ -319,7 +319,7 @@ class Clears(commands.Cog):
             
             await msg.delete()
         else:
-            await ctx.send(f'Wrong channel! Please use #p0-woe.')
+            await ctx.send(f'Wrong channel! Please use #p0-attendance.')
 
     # toggle debugmode
     @commands.command()
@@ -338,7 +338,7 @@ class Clears(commands.Cog):
             else:
                 await ctx.send(f'*Nice try pleb.*')
         else:
-            await ctx.send(f'Wrong channel! Please use #p0-woe.')
+            await ctx.send(f'Wrong channel! Please use #p0-attendance.')
 
     # update discord member IDs
     @commands.command()
@@ -374,7 +374,7 @@ class Clears(commands.Cog):
             else:
                 await ctx.send(f'*Nice try pleb.*')
         else:
-            await ctx.send(f'Wrong channel! Please use #p0-woe.')
+            await ctx.send(f'Wrong channel! Please use #p0-attendance.')
 
     @commands.command()
     async def clearguild(self, ctx):
@@ -391,7 +391,7 @@ class Clears(commands.Cog):
             else:
                 await ctx.send(f'This command is unavailable for you!')
         else:
-            await ctx.send(f'Wrong channel! Please use #p0-woe.')
+            await ctx.send(f'Wrong channel! Please use #p0-attendance.')
         # sh.values_clear("Sheet1!B3:E50")
 
     @commands.command()
@@ -412,7 +412,7 @@ class Clears(commands.Cog):
             else:
                 await ctx.send(f'This command is unavailable for you!')
         else:
-            await ctx.send(f'Wrong channel! Please use #p0-woe.')
+            await ctx.send(f'Wrong channel! Please use #p0-attendance.')
 
     @commands.command()
     async def clearparty(self, ctx):
@@ -469,7 +469,7 @@ class Clears(commands.Cog):
             else:
                 await ctx.send(f'This command is unavailable for you!')
         else:
-            await ctx.send(f'Wrong channel! Please use #p0-woe.')
+            await ctx.send(f'Wrong channel! Please use #p0-attendance.')
 
     @commands.command()
     async def enlist(self, ctx, *, arguments):
@@ -559,7 +559,7 @@ For Wizard: {list_wizard}
                     #await ctx.send(f'{feedback_celeryplz}')
             await autosort(ctx, rostersheet)
         else:
-            await ctx.send("Wrong channel! Please use #p0-woe.")
+            await ctx.send("Wrong channel! Please use #p0-attendance.")
 
     @commands.command()
     async def att(self, ctx, *, arguments):
@@ -568,7 +568,7 @@ For Wizard: {list_wizard}
         commander_name = commander.name
         
         if not channel.id in botinit_id:
-            await ctx.send("Wrong channel! Please use #p0-woe.")
+            await ctx.send("Wrong channel! Please use #p0-attendance.")
             return
         
         #arglist = [x.strip() for x in arguments.split(',')]
@@ -741,7 +741,7 @@ For Wizard: {list_wizard}
             await ctx.send(f'Total no. of No answers: {noppie}')
             await msg.delete()
         else:
-            await ctx.send("Wrong channel! Please use #p0-woe.")
+            await ctx.send("Wrong channel! Please use #p0-attendance.")
 
 
     @commands.command()
@@ -785,7 +785,7 @@ PLEASE MIND THE COMMA, IT ENSURES THAT I SEE EVERY ARGUMENT:
 > updates Discord ID of all members in the list'''
                 await ctx.send(f'Hi boss! Here are the **admin-only commands**:{msghelpadmin}')
         else:
-            await ctx.send("Wrong channel! Please use #p0-woe.")
+            await ctx.send("Wrong channel! Please use #p0-attendance.")
 
     @commands.command()
     async def listpt(self, ctx):
@@ -856,7 +856,7 @@ PLEASE MIND THE COMMA, IT ENSURES THAT I SEE EVERY ARGUMENT:
             await msg.delete()
             # return
         else:
-            await ctx.send("Wrong channel! Please use #p0-woe.")
+            await ctx.send("Wrong channel! Please use #p0-attendance.")
 
 def setup(client):
     client.add_cog(Clears(client))
