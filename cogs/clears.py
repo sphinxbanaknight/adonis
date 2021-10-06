@@ -822,7 +822,7 @@ PLEASE MIND THE COMMA, IT ENSURES THAT I SEE EVERY ARGUMENT:
             # for cell in cell_list:
             #     if not cell == "" and not cell == None:
             #         get_third.append(cell.value)
-            print("Hi826")
+            if debugger: print("Hi826")
             # MATK_names = [item for item in get_MATK if item]
             # ATK_names = [item for item in get_ATK if item]
             # MATK_roles = [item for item in get_ATK_class if item]
@@ -830,7 +830,7 @@ PLEASE MIND THE COMMA, IT ENSURES THAT I SEE EVERY ARGUMENT:
             # THIRD_names = [item for item in get_third if item]
             try:
                 embeded = discord.Embed(title="Current Party List", description="A list of our Current Party List", color=0x00FF00)
-                print("Hi836")
+                if debugger: print("Hi833")
             except Exception as e:
                 print(f'discord embed returned {e}')
                 return
@@ -838,11 +838,11 @@ PLEASE MIND THE COMMA, IT ENSURES THAT I SEE EVERY ARGUMENT:
             ATKpt = ''
             MATKpt = ''
             # THIRDpt = ''
-            for x in range(len(MATK_names)):
-                MATKpt += "[" + get_MATK_class[x] +"] " + get_MATK[x] + '\n'
+            for x in range(len(get_MATK)):
+                MATKpt += "[" + get_MATK_class[x] + "] " + get_MATK[x] + '\n'
             x = 0
-            for x in range(len(ATK_names)):
-                ATKpt += "[" + get_ATK_class[x] +"] " + get_ATK[x] + '\n'
+            for x in range(len(get_ATK)):
+                ATKpt += "[" + get_ATK_class[x] + "] " + get_ATK[x] + '\n'
             x = 0
             # for x in range(len(THIRD_names)):
             #     THIRDpt += THIRD_names[x] + '\n'
@@ -862,7 +862,7 @@ PLEASE MIND THE COMMA, IT ENSURES THAT I SEE EVERY ARGUMENT:
             #     print(f'add field returned {e}')
             #     return
 
-            print("Hi865")
+            if debugger:  print("Hi865")
             try:
                 await ctx.send(embed=embeded)
             except Exception as e:
@@ -870,8 +870,7 @@ PLEASE MIND THE COMMA, IT ENSURES THAT I SEE EVERY ARGUMENT:
             await msg.delete()
             # return
 
-
-            print("Hi874")
+            if debugger:  print("Hi874")
         else:
             await ctx.send("Wrong channel! Please use #p0-attendance.")
 
