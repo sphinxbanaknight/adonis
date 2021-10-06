@@ -802,7 +802,7 @@ PLEASE MIND THE COMMA, IT ENSURES THAT I SEE EVERY ARGUMENT:
             for cell in cell_list:
                 if not cell == "" and not cell == None:
                     get_MATK.append(cell.value)
-                    get_MATK_class.append(rostersheet.get(count, 13).value)
+                    get_MATK_class.append(rostersheet.cell(count, 13).value)
                 count += 1
             cell_list = rostersheet.range("M19:M30")
             get_ATK = [""]
@@ -811,7 +811,7 @@ PLEASE MIND THE COMMA, IT ENSURES THAT I SEE EVERY ARGUMENT:
             for cell in cell_list:
                 if not cell == "" and not cell == None:
                     get_ATK.append(cell.value)
-                    get_ATK_class.append(rostersheet.get(count, 13).value)
+                    get_ATK_class.append(rostersheet.cell(count, 13).value)
                 count += 1
             #cell_list = rostersheet.range("M34:M45")
             # get_third = [""]
