@@ -797,14 +797,22 @@ PLEASE MIND THE COMMA, IT ENSURES THAT I SEE EVERY ARGUMENT:
                 f'`Please wait... I am parsing a list of our Party List. Refrain from entering any other commands.`')
             cell_list = rostersheet.range("M4:M15")
             get_MATK = [""]
+            get_MATK_class = [""]
+            count = 1
             for cell in cell_list:
                 if not cell == "" and not cell == None:
                     get_MATK.append(cell.value)
+                    get_MATK_class.append(rostersheet.get(count, 13).value)
+                count += 1
             cell_list = rostersheet.range("M19:M30")
             get_ATK = [""]
+            get_ATK_class = [""]
+            count = 1
             for cell in cell_list:
                 if not cell == "" and not cell == None:
                     get_ATK.append(cell.value)
+                    get_ATK_class.append(rostersheet.get(count, 13).value)
+                count += 1
             #cell_list = rostersheet.range("M34:M45")
             # get_third = [""]
             # for cell in cell_list:
@@ -813,6 +821,8 @@ PLEASE MIND THE COMMA, IT ENSURES THAT I SEE EVERY ARGUMENT:
 
             MATK_names = [item for item in get_MATK if item]
             ATK_names = [item for item in get_ATK if item]
+            MATK_roles = [item for item in get_ATK_class if item]
+            ATK_roles = [item for item in get_ATK_class if item]
             # THIRD_names = [item for item in get_third if item]
 
             try:
@@ -827,10 +837,10 @@ PLEASE MIND THE COMMA, IT ENSURES THAT I SEE EVERY ARGUMENT:
             MATKpt = ''
             # THIRDpt = ''
             for x in range(len(MATK_names)):
-                MATKpt += MATK_names[x] + '\n'
+                MATKpt += "[" + MATK_roles[x] +"] " + MATK_names[x] + '\n'
             x = 0
             for x in range(len(ATK_names)):
-                ATKpt += ATK_names[x] + '\n'
+                ATKpt += "[" + ATK_roles[x] +"] " + ATK_names[x] + '\n'
             x = 0
             # for x in range(len(THIRD_names)):
             #     THIRDpt += THIRD_names[x] + '\n'
