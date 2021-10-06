@@ -796,11 +796,10 @@ PLEASE MIND THE COMMA, IT ENSURES THAT I SEE EVERY ARGUMENT:
             msg = await ctx.send(
                 f'`Please wait... I am parsing a list of our Party List. Refrain from entering any other commands.`')
             cell_list = rostersheet.range("M4:M15")
-            get_MATK = [""]
-            get_MATK_class = [""]
+            get_MATK = []
+            get_MATK_class = []
             count = 4
             for cell in cell_list:
-
                 #if (not str(cell.value) == "" or not str(cell.value) is None) and cell.value:
                 if cell.value:
                     get_MATK.append(cell.value)
@@ -813,7 +812,7 @@ PLEASE MIND THE COMMA, IT ENSURES THAT I SEE EVERY ARGUMENT:
             count = 19
             for cell in cell_list:
                 if cell.value:
-                #if (not str(cell.value) == "" or not str(cell.value) is None) and cell.value:
+                    #if (not str(cell.value) == "" or not str(cell.value) is None) and cell.value:
                     get_ATK.append(cell.value)
                     get_ATK_class.append(rostersheet.cell(count, 12).value)
                     if debugger: print(get_ATK_class)
@@ -823,17 +822,15 @@ PLEASE MIND THE COMMA, IT ENSURES THAT I SEE EVERY ARGUMENT:
             # for cell in cell_list:
             #     if not cell == "" and not cell == None:
             #         get_third.append(cell.value)
-
-            MATK_names = [item for item in get_MATK if item]
-            ATK_names = [item for item in get_ATK if item]
-            MATK_roles = [item for item in get_ATK_class if item]
-            ATK_roles = [item for item in get_ATK_class if item]
+            print("Hi826")
+            # MATK_names = [item for item in get_MATK if item]
+            # ATK_names = [item for item in get_ATK if item]
+            # MATK_roles = [item for item in get_ATK_class if item]
+            # ATK_roles = [item for item in get_ATK_class if item]
             # THIRD_names = [item for item in get_third if item]
-
             try:
-                embeded = discord.Embed(title="Current Party List", description="A list of our Current Party List",
-                                        color=0x00FF00)
-
+                embeded = discord.Embed(title="Current Party List", description="A list of our Current Party List", color=0x00FF00)
+                print("Hi836")
             except Exception as e:
                 print(f'discord embed returned {e}')
                 return
@@ -842,10 +839,10 @@ PLEASE MIND THE COMMA, IT ENSURES THAT I SEE EVERY ARGUMENT:
             MATKpt = ''
             # THIRDpt = ''
             for x in range(len(MATK_names)):
-                MATKpt += "[" + MATK_roles[x] +"] " + MATK_names[x] + '\n'
+                MATKpt += "[" + get_MATK_class[x] +"] " + get_MATK[x] + '\n'
             x = 0
             for x in range(len(ATK_names)):
-                ATKpt += "[" + ATK_roles[x] +"] " + ATK_names[x] + '\n'
+                ATKpt += "[" + get_ATK_class[x] +"] " + get_ATK[x] + '\n'
             x = 0
             # for x in range(len(THIRD_names)):
             #     THIRDpt += THIRD_names[x] + '\n'
@@ -864,12 +861,17 @@ PLEASE MIND THE COMMA, IT ENSURES THAT I SEE EVERY ARGUMENT:
             # except Exception as e:
             #     print(f'add field returned {e}')
             #     return
+
+            print("Hi865")
             try:
                 await ctx.send(embed=embeded)
             except Exception as e:
                 print(f'send embed returned {e}')
             await msg.delete()
             # return
+
+
+            print("Hi874")
         else:
             await ctx.send("Wrong channel! Please use #p0-attendance.")
 
