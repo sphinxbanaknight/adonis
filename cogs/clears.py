@@ -800,7 +800,7 @@ PLEASE MIND THE COMMA, IT ENSURES THAT I SEE EVERY ARGUMENT:
             get_MATK_class = [""]
             count = 4
             for cell in cell_list:
-                if debugger: print("\"" + cell.value + "\"")
+                if debugger: print("\"" + type(cell.value) + "\"")
                 if not cell.value == "" or not cell.value == None:
                     get_MATK.append(cell.value)
                     get_MATK_class.append(rostersheet.cell(count, 12).value)
