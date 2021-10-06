@@ -800,7 +800,7 @@ PLEASE MIND THE COMMA, IT ENSURES THAT I SEE EVERY ARGUMENT:
             get_MATK_class = [""]
             count = 4
             for cell in cell_list:
-                if not cell == "" or not cell == None:
+                if not cell.value == "" or not cell.value == None:
                     get_MATK.append(cell.value)
                     get_MATK_class.append(rostersheet.cell(count, 12).value)
                     if debugger: print(get_MATK_class)
@@ -810,7 +810,7 @@ PLEASE MIND THE COMMA, IT ENSURES THAT I SEE EVERY ARGUMENT:
             get_ATK_class = [""]
             count = 4
             for cell in cell_list:
-                if not cell == "" or not cell == None:
+                if not cell.value == "" or not cell.value == None:
                     get_ATK.append(cell.value)
                     get_ATK_class.append(rostersheet.cell(count, 12).value)
                     if debugger: print(get_ATK_class)
