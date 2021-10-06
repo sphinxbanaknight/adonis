@@ -800,21 +800,21 @@ PLEASE MIND THE COMMA, IT ENSURES THAT I SEE EVERY ARGUMENT:
             get_MATK_class = [""]
             count = 4
             for cell in cell_list:
-                if debugger: print("\"" + type(cell.value) + "\"")
-                if not cell.value == "" or not cell.value == None:
+
+                if not str(cell.value) == "" or not str(cell.value == None):
                     get_MATK.append(cell.value)
                     get_MATK_class.append(rostersheet.cell(count, 12).value)
-                    #if debugger: print(get_MATK_class)
+                    if debugger: print(get_MATK_class)
                 count += 1
             cell_list = rostersheet.range("M19:M30")
             get_ATK = [""]
             get_ATK_class = [""]
             count = 19
             for cell in cell_list:
-                if not cell.value == "" or not cell.value == None:
+                if not str(cell.value) == "" or not str(cell.value == None):
                     get_ATK.append(cell.value)
                     get_ATK_class.append(rostersheet.cell(count, 12).value)
-                    #if debugger: print(get_ATK_class)
+                    if debugger: print(get_ATK_class)
                 count += 1
             #cell_list = rostersheet.range("M34:M45")
             # get_third = [""]
