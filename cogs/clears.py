@@ -808,7 +808,7 @@ PLEASE MIND THE COMMA, IT ENSURES THAT I SEE EVERY ARGUMENT:
             cell_list = rostersheet.range("M19:M30")
             get_ATK = [""]
             get_ATK_class = [""]
-            count = 4
+            count = 19
             for cell in cell_list:
                 if not cell.value == "" or not cell.value == None:
                     get_ATK.append(cell.value)
