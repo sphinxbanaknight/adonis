@@ -807,8 +807,8 @@ PLEASE MIND THE COMMA, IT ENSURES THAT I SEE EVERY ARGUMENT:
                     if debugger: print(get_MATK_class)
                 count += 1
             cell_list = rostersheet.range("M19:M30")
-            get_ATK = [""]
-            get_ATK_class = [""]
+            get_ATK = []
+            get_ATK_class = []
             count = 19
             for cell in cell_list:
                 if cell.value:
